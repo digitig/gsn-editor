@@ -203,7 +203,7 @@ public class SacmElement {
 	
 	/**
 	 * Get an unmodifiable collection of error strings
-	 * @return
+	 * @return the error strings.
 	 */
 	public Collection<String> getErrors() {
 		return Collections.unmodifiableCollection(errors);
