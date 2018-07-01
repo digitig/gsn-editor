@@ -8,6 +8,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
+import model.ValidationErrors;
 import model.base.ModelElement;
 import model.base.SacmElement;
 
@@ -69,9 +70,9 @@ class TestSacmElement {
 	@DisplayName("If citedElement is populated, isCitation must be true.")
 	void testCitedElementConsistent() {
 		sacmElement.setCitedElement(sacmElement);
-		assertTrue(sacmElement.getErrors().contains(SacmElement.INCONSISTENT_IS_CITATION_ERROR));
+		assertTrue(sacmElement.getErrors().contains(ValidationErrors.INCONSISTENT_IS_CITATION_ERROR));
 		sacmElement.setIsCitation(true);
-		assertFalse(sacmElement.getErrors().contains(SacmElement.INCONSISTENT_IS_CITATION_ERROR));
+		assertFalse(sacmElement.getErrors().contains(ValidationErrors.INCONSISTENT_IS_CITATION_ERROR));
 	}
 	
 	@Test
@@ -79,9 +80,9 @@ class TestSacmElement {
 	void testAbstractFormConsistent() {
 		sacmElement.setIsAbstract(true);
 		sacmElement.setAbstractForm(sacmElement);
-		assertTrue(sacmElement.getErrors().contains(SacmElement.INCONSISTENT_IS_ABSTRACT_ERROR));
+		assertTrue(sacmElement.getErrors().contains(ValidationErrors.INCONSISTENT_IS_ABSTRACT_ERROR));
 		sacmElement.setIsAbstract(false);
-		assertFalse(sacmElement.getErrors().contains(SacmElement.INCONSISTENT_IS_ABSTRACT_ERROR));
+		assertFalse(sacmElement.getErrors().contains(ValidationErrors.INCONSISTENT_IS_ABSTRACT_ERROR));
 	}
 	
 	@Test
@@ -89,7 +90,7 @@ class TestSacmElement {
 	void testAbstractFormTypeConsistent() {
 		ModelElement modelElement = new ModelElement();
 		sacmElement.setAbstractForm(modelElement);
-		assertTrue(sacmElement.getErrors().contains(SacmElement.INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR));
+		assertTrue(sacmElement.getErrors().contains(ValidationErrors.INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR));
 	}
 	// TODO Test "If ImplementationConstraints are expressed on the referred SACMElement, the SACMElement should satisfy these ImplementationConstraints."
 }

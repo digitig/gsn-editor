@@ -4,10 +4,13 @@ import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
 import java.util.UUID;
+
+import model.ValidationErrors;
 
 /**
  * <h1>Description</h1> The base class for the ORM Structured Assurance Case
@@ -33,13 +36,10 @@ public class SacmElement {
 	private final UUID gid;
 	private boolean isCitation;
 	private boolean isAbstract;
-	protected Set<String> errors;
+	protected EnumSet<ValidationErrors> errors;
 	protected PropertyChangeSupport pcs;
 	private Optional<SacmElement> citedElement;
 	private Optional<SacmElement> abstractForm;
-	public static final String INCONSISTENT_IS_CITATION_ERROR = "SacmElement.1";
-	public static final String INCONSISTENT_IS_ABSTRACT_ERROR = "SacmElement.2";
-	public static final String INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR = "SacmElement.3";
 	
 	/**
 	 * Default constructor
@@ -62,7 +62,7 @@ public class SacmElement {
 		this.isAbstract = isAbstract;
 		this.citedElement = Optional.ofNullable(citedElement);
 		this.abstractForm = Optional.ofNullable(abstractForm);
-		errors = new HashSet<>();
+		errors = EnumSet.noneOf(ValidationErrors.class);
 	}
 	
 	/**
@@ -191,11 +191,20 @@ public class SacmElement {
 	}
 
 	protected void validate() {
-		errors.clear();
-		if (citedElement.isPresent() && !isCitation) errors.add(INCONSISTENT_IS_CITATION_ERROR);
-		if (abstractForm.isPresent() && isAbstract) errors.add(INCONSISTENT_IS_ABSTRACT_ERROR);
+		if (citedElement.isPresent() && !isCitation) {
+			errors.add(ValidationErrors.INCONSISTENT_IS_CITATION_ERROR);
+		} else {
+			errors.remove(ValidationErrors.INCONSISTENT_IS_CITATION_ERROR);
+		}
+		if (abstractForm.isPresent() && isAbstract) {
+			errors.add(ValidationErrors.INCONSISTENT_IS_ABSTRACT_ERROR);
+		} else {
+			errors.remove(ValidationErrors.INCONSISTENT_IS_ABSTRACT_ERROR);
+		}
 		if (abstractForm.isPresent() && (abstractForm.get().getClass() != this.getClass())) {
-			errors.add(INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR);
+			errors.add(ValidationErrors.INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR);
+		} else {
+			errors.remove(ValidationErrors.INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR);
 		}
 		// Fire change because errors *might* have changed.
 		pcs.firePropertyChange("errors", null, errors);
@@ -205,7 +214,7 @@ public class SacmElement {
 	 * Get an unmodifiable collection of error strings
 	 * @return the error strings.
 	 */
-	public Collection<String> getErrors() {
+	public Collection<ValidationErrors> getErrors() {
 		return Collections.unmodifiableCollection(errors);
 	}
 	
