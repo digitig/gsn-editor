@@ -73,7 +73,7 @@ public class SacmElement {
 	 * 
 	 * @return the gid.
 	 */
-	public String getGid() {
+	public final String getGid() {
 		return gid.toString();
 	}
 	
@@ -83,15 +83,16 @@ public class SacmElement {
 	 * is present, isCitation is always true.
 	 * @return a flag to indicate whether the SACMElement cites another SACMElement.
 	 */
-	public boolean getIsCitation() {
+	public final boolean getIsCitation() {
 		return isCitation;
 	}
 	
 	/**
-	 * Set a flag to indicate whether the SACMElement cites another SACMElement.
+	 * <p>Set a flag to indicate whether the SACMElement cites another SACMElement.</p>
+	 * <p>On change, notifies <b>isCitation</b></p>
 	 * @param value a flag to indicate whether the SACMElement cites another SACMElement.
 	 */
-	public void setIsCitation(boolean value) {
+	public final void setIsCitation(boolean value) {
 		if (isCitation != value) {
 			Boolean oldIsCitation = isCitation;
 			isCitation = value;
@@ -105,16 +106,17 @@ public class SacmElement {
 	 * this can be used to indicate whether an element is part of a pattern or template.
 	 * @return a flag to indicate whether the SACMElement is considered to be abstract.
 	 */
-	public boolean getIsAbstract() {
+	public final boolean getIsAbstract() {
 		return isAbstract;
 	}
 	
 	/**
-	 * Get a flag to indicate whether the SACMElement is considered to be abstract. For example, 
-	 * this can be used to indicate whether an element is part of a pattern or template.
+	 * <p>Get a flag to indicate whether the SACMElement is considered to be abstract. For example, 
+	 * this can be used to indicate whether an element is part of a pattern or template.</p>
+	 * <p>On change, notifies <b>isAbstract</b></b>
 	 * @param value a flag to indicate whether the SACMElement is considered to be abstract.
 	 */
-	public void setIsAbstract(boolean value) {
+	public final void setIsAbstract(boolean value) {
 		if (value != isAbstract ) {
 			Boolean oldisAbstract = isAbstract;
 			isAbstract = value;
@@ -128,16 +130,17 @@ public class SacmElement {
 	 * 
 	 * @return a reference to another SACMElement that the SACMElement cites.
 	 */	
-	public Optional<SacmElement> getCitedElement() {
+	public final Optional<SacmElement> getCitedElement() {
 		return citedElement;
 	}
 	
 	/**
-	 * Set a reference to another SACMElement that the SACMElement cites.
+	 * <p>Set a reference to another SACMElement that the SACMElement cites.</p>
+	 * <p>On change, notifies <b>citedElement</b></p>
 	 * 
 	 * @param value a reference to another SACMElement that the SACMElement cites.
 	 */
-	public void setCitedElement(Optional<SacmElement> value) {
+	public final void setCitedElement(Optional<SacmElement> value) {
 		if (!citedElement.equals(value)) {
 			Optional<SacmElement> oldCitedElement = citedElement;
 			citedElement = value;
@@ -147,11 +150,11 @@ public class SacmElement {
 	}
 	
 	/**
-	 * Set a reference to another SACMElement that the SACMElement cites.
-	 * 
+	 * <p>Set a reference to another SACMElement that the SACMElement cites.</p>
+	 * <p>On change, notifies <b>citedElement</b></p> 
 	 * @param value a reference to another SACMElement that the SACMElement cites.
 	 */
-	public void setCitedElement(SacmElement value) {
+	public final void setCitedElement(SacmElement value) {
 		setCitedElement(Optional.ofNullable(value));
 	}
 	
@@ -161,17 +164,18 @@ public class SacmElement {
 	 * 
 	 * @return the reference to another abstract SACMElement.
 	 */
-	public Optional<SacmElement> getAbstractForm() {
+	public final Optional<SacmElement> getAbstractForm() {
 		return abstractForm;
 	}
 	
 	/**
-	 * Set an optional reference to another abstract SACMElement to which this
-	 * concrete SACMElement conforms.
+	 * <p>Set an optional reference to another abstract SACMElement to which this
+	 * concrete SACMElement conforms.</p>
+	 * <p>On change, notifies <b>abstractForm</b></p>
 	 * 
 	 * @param value an optional reference to another abstract SACMElement.
 	 */
-	public void setAbstractForm(Optional<SacmElement> value) {
+	public final void setAbstractForm(Optional<SacmElement> value) {
 		if (!abstractForm.equals(value)) {
 			Optional<SacmElement> oldValue = abstractForm;
 			abstractForm = value;
@@ -181,16 +185,17 @@ public class SacmElement {
 	}
 	
 	/**
-	 * Set an optional reference to another abstract SACMElement to which this
-	 * concrete SACMElement conforms.
+	 * <p>Set an optional reference to another abstract SACMElement to which this
+	 * concrete SACMElement conforms.</p>
+	 * <p>On change, notifies <b>abstractForm</b></p>
 	 * 
 	 * @param value an optional reference to another abstract SACMElement.
 	 */
-	public void setAbstractForm(SacmElement value) {
+	public final void setAbstractForm(SacmElement value) {
 		setAbstractForm(Optional.ofNullable(value));
 	}
 
-	protected void validate() {
+	protected final void validate() {
 		if (citedElement.isPresent() && !isCitation) {
 			errors.add(ValidationErrors.INCONSISTENT_IS_CITATION_ERROR);
 		} else {
@@ -214,7 +219,7 @@ public class SacmElement {
 	 * Get an unmodifiable collection of error strings
 	 * @return the error strings.
 	 */
-	public Collection<ValidationErrors> getErrors() {
+	public final Collection<ValidationErrors> getErrors() {
 		return Collections.unmodifiableCollection(errors);
 	}
 	
@@ -222,7 +227,7 @@ public class SacmElement {
 	 * Add a property change listener
 	 * @param listener a property change listener
 	 */
-	public void addPropertyChangeListener(PropertyChangeListener listener) {
+	public final void addPropertyChangeListener(PropertyChangeListener listener) {
 		pcs.addPropertyChangeListener(listener);
 	}
 	
@@ -231,7 +236,7 @@ public class SacmElement {
 	 * @param property the property to listen to
 	 * @param listener the listener
 	 */
-	public void addPropertyChangeListener(String property, PropertyChangeListener listener) {
+	public final void addPropertyChangeListener(String property, PropertyChangeListener listener) {
 		pcs.addPropertyChangeListener(property, listener);
 	}
 	
@@ -239,7 +244,7 @@ public class SacmElement {
 	 * Remove a property change listener
 	 * @param listener the property change listener
 	 */
-	public void removePropertyChangeListener(PropertyChangeListener listener) {
+	public final void removePropertyChangeListener(PropertyChangeListener listener) {
 		pcs.removePropertyChangeListener(listener);
 	}
 }
