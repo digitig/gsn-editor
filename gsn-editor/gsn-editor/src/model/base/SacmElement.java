@@ -1,13 +1,12 @@
 package model.base;
 
+import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
-import java.util.HashSet;
 import java.util.Optional;
-import java.util.Set;
 import java.util.UUID;
 
 import model.ValidationErrors;
@@ -194,25 +193,36 @@ public class SacmElement {
 	public final void setAbstractForm(SacmElement value) {
 		setAbstractForm(Optional.ofNullable(value));
 	}
-
-	protected final void validate() {
-		if (citedElement.isPresent() && !isCitation) {
-			errors.add(ValidationErrors.INCONSISTENT_IS_CITATION_ERROR);
+	
+	private final void validateInconsistentIsCitation() {
+		if (!getCitedElement().isPresent() || getIsCitation()) {
+			errors.remove(ValidationErrors.INCONSISTENT_IS_CITATION_ERROR);			
 		} else {
-			errors.remove(ValidationErrors.INCONSISTENT_IS_CITATION_ERROR);
-		}
+			errors.add(ValidationErrors.INCONSISTENT_IS_CITATION_ERROR);
+		}		
+	}
+	
+	private final void validateInconsistentIsAbstract() {
 		if (abstractForm.isPresent() && isAbstract) {
 			errors.add(ValidationErrors.INCONSISTENT_IS_ABSTRACT_ERROR);
 		} else {
 			errors.remove(ValidationErrors.INCONSISTENT_IS_ABSTRACT_ERROR);
-		}
+		}		
+	}
+	
+	private final void validateInconsistentAbstractFormType() {
 		if (abstractForm.isPresent() && (abstractForm.get().getClass() != this.getClass())) {
 			errors.add(ValidationErrors.INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR);
 		} else {
 			errors.remove(ValidationErrors.INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR);
 		}
-		// Fire change because errors *might* have changed.
-		pcs.firePropertyChange("errors", null, errors);
+		
+	}
+	
+	protected final void validate() {
+		validateInconsistentIsCitation();
+		validateInconsistentIsAbstract();
+		validateInconsistentAbstractFormType();
 	}
 	
 	/**

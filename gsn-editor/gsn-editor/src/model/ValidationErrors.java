@@ -1,17 +1,20 @@
 package model;
 
+import java.util.function.Predicate;
+import model.base.SacmElement;
+
 public enum ValidationErrors {
-	INCONSISTENT_IS_CITATION_ERROR("SacmElement.1"),
-	INCONSISTENT_IS_ABSTRACT_ERROR("SacmElement.2"),
-	INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR("SacmElement.3");
+	INCONSISTENT_IS_CITATION_ERROR(null),
+	INCONSISTENT_IS_ABSTRACT_ERROR(null),
+	INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR(null);
 	
-	private final String id;
+	private final Predicate<? extends SacmElement> isValid;
 	
-	ValidationErrors(String id) {
-		this.id = id;
+	ValidationErrors(Predicate<? extends SacmElement> isValid) {
+		this.isValid = isValid;
 	}
-	
-	public String getId() {
-		return id;
+
+	public Predicate<? extends SacmElement> getIsValid() {
+		return isValid;
 	}
 }
