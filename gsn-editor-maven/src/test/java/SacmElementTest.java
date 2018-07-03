@@ -1,4 +1,4 @@
-package test.java;
+package test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -7,28 +7,22 @@ import java.util.Optional;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
 import model.ValidationErrors;
+import model.base.ModelElement;
 import model.base.SacmElement;
 
-class SacmElementTest {
-	class ConcreteSacmElement extends SacmElement {
-		
-	}
-	
-	class AlternateSacmElement extends SacmElement {
-		
-	}
-	
+class TestSacmElement {
 	SacmElement sacmElement;
 
 	@BeforeEach
 	void setUp() throws Exception {
-		sacmElement = new ConcreteSacmElement();
+		sacmElement = new SacmElement();
 	}
 
 	@Test
 	void testGidUnique() {
-		SacmElement element2 = new ConcreteSacmElement();
+		SacmElement element2 = new SacmElement();
 		assertNotEquals(element2.getGid(), sacmElement.getGid());
 	}
 	
@@ -94,7 +88,8 @@ class SacmElementTest {
 	@Test
 	@DisplayName("When +abstractForm is used to refer to another SACMElement, the referred SACMElement should be of the same type of the SACMElement")
 	void testAbstractFormTypeConsistent() {
-		sacmElement.setAbstractForm(new AlternateSacmElement());
+		ModelElement modelElement = new ModelElement();
+		sacmElement.setAbstractForm(modelElement);
 		assertTrue(sacmElement.getErrors().contains(ValidationErrors.INCONSISTENT_ABSTRACT_FORM_TYPE_ERROR));
 	}
 	// TODO Test "If ImplementationConstraints are expressed on the referred SACMElement, the SACMElement should satisfy these ImplementationConstraints."

@@ -1,6 +1,5 @@
 package model.base;
 
-import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.Collection;
@@ -31,7 +30,7 @@ import model.ValidationErrors;
  * </ul>
  */
 // TODO make SacmElement abstract
-public class SacmElement {
+public abstract class SacmElement {
 	private final UUID gid;
 	private boolean isCitation;
 	private boolean isAbstract;
@@ -43,7 +42,7 @@ public class SacmElement {
 	/**
 	 * Default constructor
 	 */
-	public SacmElement() {
+	protected SacmElement() {
 		this(false, false, null, null);
 	}
 	
@@ -54,7 +53,7 @@ public class SacmElement {
 	 * @param citedElement a reference to another SACMElement that this SACMElement cites.
 	 * @param abstractForm an optional reference to another abstract SACMElement to which this concrete SACMElement conforms.
 	 */
-	public SacmElement(boolean isCitation, boolean isAbstract, SacmElement citedElement, SacmElement abstractForm) {
+	protected SacmElement(boolean isCitation, boolean isAbstract, SacmElement citedElement, SacmElement abstractForm) {
 		pcs = new PropertyChangeSupport(this);
 		gid = UUID.randomUUID();
 		this.isCitation = isCitation;
