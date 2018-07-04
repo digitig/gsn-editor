@@ -16,15 +16,49 @@
  *******************************************************************************/
 package model.base;
 
+import java.beans.PropertyChangeListener;
+import java.beans.PropertyChangeSupport;
+
+import model.INotifier;
+
 /**
  * <h1>Description</h1>
  * SACMElement is the base class for SACM.
- * <h1>Sementics</h1>
+ * <h1>Semantics</h1>
  * All the elements of a structured assurance case effort created with SACM correspond to a SACMElement.
  * 
  * @author Tim Rowe
  *
  */
-public abstract class SacmElement {
+public abstract class SacmElement implements INotifier {
+	protected PropertyChangeSupport pcs;
 
+	public SacmElement() {
+		pcs = new PropertyChangeSupport(this);
+	}
+	
+	/**
+	 * Add a property change listener
+	 * @param listener a property change listener
+	 */
+	public final void addPropertyChangeListener(PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(listener);
+	}
+	
+	/**
+	 * Add a property change listener to listen to a specific property
+	 * @param property the property to listen to
+	 * @param listener the listener
+	 */
+	public final void addPropertyChangeListener(String property, PropertyChangeListener listener) {
+		pcs.addPropertyChangeListener(property, listener);
+	}
+	
+	/**
+	 * Remove a property change listener
+	 * @param listener the property change listener
+	 */
+	public final void removePropertyChangeListener(PropertyChangeListener listener) {
+		pcs.removePropertyChangeListener(listener);
+	}
 }

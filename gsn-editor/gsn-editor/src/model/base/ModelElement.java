@@ -16,8 +16,6 @@
  *******************************************************************************/
 package model.base;
 
-import java.beans.PropertyChangeListener;
-import java.beans.PropertyChangeSupport;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.EnumSet;
@@ -51,7 +49,6 @@ public abstract class ModelElement extends SacmElement {
 	private boolean isCitation;
 	private boolean isAbstract;
 	protected EnumSet<ValidationErrors> errors;
-	protected PropertyChangeSupport pcs;
 	private Optional<ModelElement> citedElement;
 	private Optional<ModelElement> abstractForm;
 	
@@ -70,7 +67,6 @@ public abstract class ModelElement extends SacmElement {
 	 * @param abstractForm an optional reference to another abstract ModelElement to which this concrete ModelElement conforms.
 	 */
 	protected ModelElement(boolean isCitation, boolean isAbstract, ModelElement citedElement, ModelElement abstractForm) {
-		pcs = new PropertyChangeSupport(this);
 		gid = UUID.randomUUID();
 		this.isCitation = isCitation;
 		this.isAbstract = isAbstract;
@@ -246,30 +242,5 @@ public abstract class ModelElement extends SacmElement {
 	 */
 	public final Collection<ValidationErrors> getErrors() {
 		return Collections.unmodifiableCollection(errors);
-	}
-	
-	/**
-	 * Add a property change listener
-	 * @param listener a property change listener
-	 */
-	public final void addPropertyChangeListener(PropertyChangeListener listener) {
-		pcs.addPropertyChangeListener(listener);
-	}
-	
-	/**
-	 * Add a property change listener to listen to a specific property
-	 * @param property the property to listen to
-	 * @param listener the listener
-	 */
-	public final void addPropertyChangeListener(String property, PropertyChangeListener listener) {
-		pcs.addPropertyChangeListener(property, listener);
-	}
-	
-	/**
-	 * Remove a property change listener
-	 * @param listener the property change listener
-	 */
-	public final void removePropertyChangeListener(PropertyChangeListener listener) {
-		pcs.removePropertyChangeListener(listener);
 	}
 }
