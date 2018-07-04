@@ -18,13 +18,15 @@ package model.terminology;
 
 /**
  * <h1>Description</h1>
- * The Category class describes categories of ExpressionElements (Terms and Expressions) and can be used 
- * to group these elements within TerminologyPackages.
+ * The TerminologyAsset Class is the abstract class for the different types of terminology elements
+ * represented in SACM.
  * <h1>Semantics</h1>
- * Terms and ExpressionElements can be said to belong to Categories. Categories can group Terms, 
- * Expressions, or a mixture of both. For example, a Category could be used to describe the terminology 
- * associated with a specific assurance standard, project, or system.
+ * TerminologyAssets represent all of the elements required to model and categorize expressions in SACM
+ * (expressions and terminology categories).
+ * 
+ * @author owner
+ *
  */
-public abstract class Category extends TerminologyAsset {
+public abstract class TerminologyAsset extends TerminologyElement {
 
 }
