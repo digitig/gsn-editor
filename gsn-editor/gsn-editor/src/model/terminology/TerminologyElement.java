@@ -14,16 +14,22 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
+package model.terminology;
+
+import model.base.ModelElement;
 
 /**
- * This portion of the SACM metamodel describes and defines the 
- * concepts of term, expression, and an external interface
- * to terminology information from others. This area of the 
- * Structured Assurance Case Metamodel also provides the
- * starting foundation for formalism in the assembly of terms 
- * into expressions without mandating the formalism for those
- * that do not need it.
- 
- * @author Tim Rowe
+ * <h1>Description</h1>
+ * TerminologyElement is an abstract class that serves as a parent class for all SACM terminology assets
+ * (TerminologyAsset) and the packaging of these assets (TerminologyPackage and 
+ * TerminologyPackageCitation).
+ * <h1>Semantics</h1>
+ * TerminologyElement is the base class for specifying the terminology aspects of an assurance case
+ * (AssuranceCasePackage).
+ * 
+ * @author owner
+ *
  */
-package model.terminology;
+public abstract class TerminologyElement extends ModelElement {
+
+}

@@ -14,16 +14,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  *******************************************************************************/
+package model.terminology;
 
 /**
- * This portion of the SACM metamodel describes and defines the 
- * concepts of term, expression, and an external interface
- * to terminology information from others. This area of the 
- * Structured Assurance Case Metamodel also provides the
- * starting foundation for formalism in the assembly of terms 
- * into expressions without mandating the formalism for those
- * that do not need it.
- 
- * @author Tim Rowe
+ * <h1>Description</h1>
+ * The Category class describes categories of ExpressionElements (Terms and Expressions) and can be used 
+ * to group these elements within TerminologyPackages.
+ * <h1>Semantics</h1>
+ * Terms and ExpressionElements can be said to belong to Categories. Categories can group Terms, 
+ * Expressions, or a mixture of both. For example, a Category could be used to describe the terminology 
+ * associated with a specific assurance standard, project, or system.
  */
-package model.terminology;
+public class Category {
+
+}
