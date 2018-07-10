@@ -26,7 +26,7 @@ import model.base.ModelElement;
  * TerminologyElement is the base class for specifying the terminology aspects of an assurance case
  * (AssuranceCasePackage).
  * 
- * @author owner
+ * @author Tim Rowe
  *
  */
 public abstract class TerminologyElement extends ModelElement {

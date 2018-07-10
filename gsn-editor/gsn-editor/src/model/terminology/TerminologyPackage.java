@@ -70,10 +70,10 @@ public class TerminologyPackage extends TerminologyElement {
 	 * Set the nested terminologyPackage contained in a given instance of a TerminologyPackage
 	 * @param value The nested terminologyPackage contained in a given instance of a TerminologyPackage
 	 */
-	public void setTerminologyPackageCitation(Set<TerminologyPackage> value) {
-		Set<TerminologyPackage> oldValue = terminologyPackage;
-		terminologyPackage = value;
-		pcs.firePropertyChange("terminologyPackage", oldValue, value);
+	public void setTerminologyPackageCitation(Set<TerminologyPackageCitation> value) {
+		Set<TerminologyPackageCitation> oldValue = terminologyPackageCitation;
+		terminologyPackageCitation = value;
+		pcs.firePropertyChange("terminologyPackageCitation", oldValue, value);
 	}
 	
 	/**
@@ -88,9 +88,9 @@ public class TerminologyPackage extends TerminologyElement {
 	 * Set the nested terminologyPackageCitation contained in a given instance of a TerminologyPackage
 	 * @param value The nested terminologyPackageCitation contained in a given instance of a TerminologyPackage
 	 */
-	public void setTerminologyPackage(Set<TerminologyPackageCitation> value) {
-		Set<TerminologyPackageCitation> oldValue = terminologyPackageCitation;
-		terminologyPackageCitation = value;
-		pcs.firePropertyChange("terminologyPackageCitation", oldValue, value);
+	public void setTerminologyPackage(Set<TerminologyPackage> value) {
+		Set<TerminologyPackage> oldValue = terminologyPackage;
+		terminologyPackage = value;
+		pcs.firePropertyChange("terminologyPackage", oldValue, value);
 	}
 }
