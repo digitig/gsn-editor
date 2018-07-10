@@ -19,7 +19,6 @@ package model.terminology;
 import java.util.Optional;
 
 /**
- * <h1>Description</h1>
  * The TerminlogyPackageCitation is a citation (reference) to another TerminologyPackage.
  * <h1>Semantics</h1>
  * <p>TerminologyPackageCitations make it possible to cite other TerminologyPackages.</p>

@@ -16,6 +16,81 @@
  *******************************************************************************/
 package model.terminology;
 
-public class TerminologyPackage {
-	// TODO implement
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * The TerminologyPackage Class is the container class for SACM terminology assets.
+ * <h1>Semantics</h1>
+ * TerminologyPackages contain the TerminologyAssets that can be used within the naming and description
+ * of SACM arguments and artifacts. TerminologyPackage elements can be nested, and can contain citations 
+ * (references) to other TerminologyPackages.
+ */
+public class TerminologyPackage extends TerminologyElement {
+	private Set<TerminologyAsset> terminologyAsset;
+	private Set<TerminologyPackage> terminologyPackage;
+	private Set<TerminologyPackageCitation> terminologyPackageCitation;
+	
+	/**
+	 * Default constructor
+	 */
+	public TerminologyPackage() {
+		terminologyAsset = new HashSet<>();
+		terminologyPackage = new HashSet<>();
+		terminologyPackageCitation = new HashSet<>();
+	}
+	
+	/**
+	 * Get the TerminologyAssets contained in a given instance of a TerminologyPackage.
+	 * @return The TerminologyAssets contained in a given instance of a TerminologyPackage.
+	 */
+	public Set<TerminologyAsset> getTerminologyAsset() {
+		return terminologyAsset;
+	}
+	
+	/**
+	 * Set the TerminologyAssets contained in a given instance of a TerminologyPackage.
+	 * @param value The TerminologyAssets contained in a given instance of a TerminologyPackage.
+	 */
+	public void setTerminologyAsset(Set<TerminologyAsset> value) {
+		Set<TerminologyAsset> oldValue = terminologyAsset;
+		terminologyAsset = value;
+		pcs.firePropertyChange("terminologyAsset", oldValue, value);
+	}
+	
+	/**
+	 * Get the nested terminologyPackage contained in a given instance of a TerminologyPackage
+	 * @return The nested terminologyPackage contained in a given instance of a TerminologyPackage
+	 */
+	public Set<TerminologyPackage> getTerminologyPackage() {
+		return terminologyPackage;
+	}
+	
+	/**
+	 * Set the nested terminologyPackage contained in a given instance of a TerminologyPackage
+	 * @param value The nested terminologyPackage contained in a given instance of a TerminologyPackage
+	 */
+	public void setTerminologyPackageCitation(Set<TerminologyPackage> value) {
+		Set<TerminologyPackage> oldValue = terminologyPackage;
+		terminologyPackage = value;
+		pcs.firePropertyChange("terminologyPackage", oldValue, value);
+	}
+	
+	/**
+	 * Get the nested terminologyPackageCitation contained in a given instance of a TerminologyPackage
+	 * @return The nested terminologyPackageCitation contained in a given instance of a TerminologyPackage
+	 */
+	public Set<TerminologyPackageCitation> getTerminologyPackageCitation() {
+		return terminologyPackageCitation;
+	}
+	
+	/**
+	 * Set the nested terminologyPackageCitation contained in a given instance of a TerminologyPackage
+	 * @param value The nested terminologyPackageCitation contained in a given instance of a TerminologyPackage
+	 */
+	public void setTerminologyPackage(Set<TerminologyPackageCitation> value) {
+		Set<TerminologyPackageCitation> oldValue = terminologyPackageCitation;
+		terminologyPackageCitation = value;
+		pcs.firePropertyChange("terminologyPackageCitation", oldValue, value);
+	}
 }

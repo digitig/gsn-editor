@@ -17,7 +17,6 @@
 package model.terminology;
 
 /**
- * <h1>Description</h1>
  * The TerminologyAsset Class is the abstract class for the different types of terminology elements
  * represented in SACM.
  * <h1>Semantics</h1>

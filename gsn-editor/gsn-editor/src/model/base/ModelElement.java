@@ -25,7 +25,7 @@ import java.util.UUID;
 import model.ValidationErrors;
 
 /**
- * <h1>Description</h1> The base class for the ORM Structured Assurance Case
+ * The base class for the ORM Structured Assurance Case
  * Metamodel
  * <h1>Semantics</h1> All the elements of a structured assurance case effort
  * created with SACM correspond to a ModelElement.

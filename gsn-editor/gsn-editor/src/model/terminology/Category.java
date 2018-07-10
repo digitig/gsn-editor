@@ -17,7 +17,6 @@
 package model.terminology;
 
 /**
- * <h1>Description</h1>
  * The Category class describes categories of ExpressionElements (Terms and Expressions) and can be used 
  * to group these elements within TerminologyPackages.
  * <h1>Semantics</h1>

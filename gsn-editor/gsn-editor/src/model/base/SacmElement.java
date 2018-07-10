@@ -22,7 +22,6 @@ import java.beans.PropertyChangeSupport;
 import model.INotifier;
 
 /**
- * <h1>Description</h1>
  * SACMElement is the base class for SACM.
  * <h1>Semantics</h1>
  * All the elements of a structured assurance case effort created with SACM correspond to a SACMElement.

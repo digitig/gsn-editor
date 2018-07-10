@@ -19,7 +19,6 @@ package model.terminology;
 import model.base.ModelElement;
 
 /**
- * <h1>Description</h1>
  * TerminologyElement is an abstract class that serves as a parent class for all SACM terminology assets
  * (TerminologyAsset) and the packaging of these assets (TerminologyPackage and 
  * TerminologyPackageCitation).
