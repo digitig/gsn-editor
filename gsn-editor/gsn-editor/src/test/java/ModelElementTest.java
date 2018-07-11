@@ -1,7 +1,10 @@
 package test.java;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
 import java.util.Optional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -21,10 +24,12 @@ class ModelElementTest {
 	}
 	
 	ModelElement modelElement;
-
+	PropertyChangeListener listener;
+	
 	@BeforeEach
 	void setUp() throws Exception {
 		modelElement = new ConcreteModelElement();
+		listener = mock(PropertyChangeListener.class);
 	}
 
 	@Test
@@ -35,24 +40,29 @@ class ModelElementTest {
 	
 	@Test
 	void testChangeIsCitation() {
+		modelElement.addPropertyChangeListener("isCitation", listener);
 		assertFalse(modelElement.getIsCitation());
 		modelElement.setIsCitation(true);
 		assertTrue(modelElement.getIsCitation());
 		modelElement.setIsCitation(false);
 		assertFalse(modelElement.getIsCitation());
+		verify(listener, times(2)).propertyChange(any(PropertyChangeEvent.class));
 	}
 	
 	@Test
 	void testChangeIsAbstract() {
+		modelElement.addPropertyChangeListener("isAbstract", listener);
 		assertFalse(modelElement.getIsAbstract());
 		modelElement.setIsAbstract(true);
 		assertTrue(modelElement.getIsAbstract());
 		modelElement.setIsAbstract(false);
 		assertFalse(modelElement.getIsAbstract());		
+		verify(listener, times(2)).propertyChange(any(PropertyChangeEvent.class));
 	}
 
 	@Test 
 	void testChangeCitedElement() {
+		modelElement.addPropertyChangeListener("citedElement", listener);
 		assertFalse(modelElement.getCitedElement().isPresent());
 		Optional<ModelElement> optionalCitedElement = Optional.of(modelElement);
 		modelElement.setCitedElement(optionalCitedElement);
@@ -60,10 +70,12 @@ class ModelElementTest {
 		ModelElement citedElement = null;
 		modelElement.setCitedElement(citedElement);
 		assertFalse(modelElement.getCitedElement().isPresent());
+		verify(listener, times(2)).propertyChange(any(PropertyChangeEvent.class));
 	}
 	
 	@Test
 	void testChangeAbstractForm() {
+		modelElement.addPropertyChangeListener("abstractForm", listener);
 		assertFalse(modelElement.getAbstractForm().isPresent());
 		Optional<ModelElement> optionalAbstractForm = Optional.of(modelElement);
 		modelElement.setAbstractForm(optionalAbstractForm);
@@ -71,6 +83,7 @@ class ModelElementTest {
 		ModelElement abstractForm = null;
 		modelElement.setAbstractForm(abstractForm);
 		assertFalse(modelElement.getAbstractForm().isPresent());		
+		verify(listener, times(2)).propertyChange(any(PropertyChangeEvent.class));
 	}
 	
 	@Test

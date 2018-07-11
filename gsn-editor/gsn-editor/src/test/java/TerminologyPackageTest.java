@@ -8,8 +8,6 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.sun.xml.internal.ws.policy.spi.AssertionCreationException;
-
 import model.terminology.TerminologyAsset;
 import model.terminology.TerminologyPackage;
 import model.terminology.TerminologyPackageCitation;
