@@ -25,5 +25,5 @@ package model.terminology;
  * associated with a specific assurance standard, project, or system.
  */
 public abstract class Category extends TerminologyAsset {
-
+	// Intentionally empty
 }

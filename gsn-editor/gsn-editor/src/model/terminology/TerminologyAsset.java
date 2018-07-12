@@ -27,5 +27,5 @@ package model.terminology;
  *
  */
 public abstract class TerminologyAsset extends TerminologyElement {
-
+	// Intentionally empty
 }

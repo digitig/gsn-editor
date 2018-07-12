@@ -30,5 +30,5 @@ import model.base.ModelElement;
  *
  */
 public abstract class TerminologyElement extends ModelElement {
-
+	// Intentionally empty
 }
