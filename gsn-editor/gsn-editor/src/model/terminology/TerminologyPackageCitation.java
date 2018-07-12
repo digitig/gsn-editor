@@ -51,7 +51,8 @@ public class TerminologyPackageCitation extends TerminologyElement {
 	}
 	
 	/**
-	 * Set the TerminologyPackage being cited by the TerminologyPackageCitation.
+	 * <p>Set the TerminologyPackage being cited by the TerminologyPackageCitation.</p>
+	 * <p>On change, notifies <b>citedPackage</b></p>
 	 * @param value The TerminologyPackage being cited by the TerminologyPackageCitation.
 	 */
 	public void setCitedPackage(Optional<TerminologyPackage> value) {
@@ -61,7 +62,8 @@ public class TerminologyPackageCitation extends TerminologyElement {
 	}
 	
 	/**
-	 * Set the TerminologyPackage being cited by the TerminologyPackageCitation.
+	 * <p>Set the TerminologyPackage being cited by the TerminologyPackageCitation.</p>
+	 * <p>On change, notifies <b>citedPackage</b></p>
 	 * @param value The TerminologyPackage being cited by the TerminologyPackageCitation.
 	 */
 	public void setCitedPackage(TerminologyPackage value) {
