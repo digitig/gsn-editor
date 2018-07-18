@@ -61,7 +61,7 @@ class TerminologyPackageTest {
 	@Test
 	void testNullRemoveTerminologyAsset() {
 		Assertions.assertThrows(NullPointerException.class, () -> {
-			terminologyPackage.addTerminologyAsset(null);
+			terminologyPackage.removeTerminologyAsset(null);
 		});
 	}
 

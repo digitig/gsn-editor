@@ -29,7 +29,7 @@ import java.util.Optional;
  * The citedPackage referred to by a TerminologyPackageCitation must be outside of the containment 
  * hierarchy containing the citation.
  * 
- * @author owner
+ * @author Tim Rowe
  *
  */
 public class TerminologyPackageCitation extends TerminologyElement {

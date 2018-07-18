@@ -23,7 +23,7 @@ package model.terminology;
  * TerminologyAssets represent all of the elements required to model and categorize expressions in SACM
  * (expressions and terminology categories).
  * 
- * @author owner
+ * @author Tim Rowe
  *
  */
 public abstract class TerminologyAsset extends TerminologyElement {

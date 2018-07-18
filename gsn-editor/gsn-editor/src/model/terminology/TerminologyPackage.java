@@ -27,6 +27,9 @@ import java.util.Set;
  * be used within the naming and description of SACM arguments and artifacts.
  * TerminologyPackage elements can be nested, and can contain citations
  * (references) to other TerminologyPackages.
+ * 
+ * @author Tim Rowe
+ *
  */
 public class TerminologyPackage extends TerminologyElement {
 	private Set<TerminologyAsset> terminologyAsset;

@@ -23,6 +23,9 @@ package model.terminology;
  * Terms and ExpressionElements can be said to belong to Categories. Categories can group Terms, 
  * Expressions, or a mixture of both. For example, a Category could be used to describe the terminology 
  * associated with a specific assurance standard, project, or system.
+ * 
+ * @author Tim Rowe
+ *
  */
 public abstract class Category extends TerminologyAsset {
 	// Intentionally empty
