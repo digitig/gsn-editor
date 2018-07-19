@@ -11,9 +11,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import model.terminology.TerminologyAsset;
 import model.terminology.TerminologyPackage;
-import model.terminology.TerminologyPackageCitation;
 
 class TerminologyPackageTest {
 	TerminologyPackage terminologyPackage;
