@@ -65,7 +65,7 @@ public class LangString {
 	
 	/**
 	 * the content of the string
-	 * @param content the content of the string
+	 * @param value the content of the string
 	 */
 	public void setContent(Optional<String> value) {
 		content = value;
