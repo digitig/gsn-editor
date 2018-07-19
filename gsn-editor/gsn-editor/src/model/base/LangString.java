@@ -23,6 +23,19 @@ public class LangString {
 		content = Optional.empty();
 	}
 	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) return true;
+		if (!(obj instanceof LangString)) return false;
+		LangString langString = (LangString)obj;
+		return langString.lang == this.lang && langString.content == this.content;
+	}
+	
+	@Override
+	public int hashCode() {
+		return lang.hashCode() + content.hashCode();
+	}
+	
 	/**
 	 * a field to indicate the language used in the string.
 	 * @return a field to indicate the language used in the string.
