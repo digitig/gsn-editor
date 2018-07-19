@@ -32,84 +32,13 @@ import java.util.Set;
  *
  */
 public class TerminologyPackage extends TerminologyElement {
-	private Set<TerminologyAsset> terminologyAsset;
 	private Set<TerminologyPackage> terminologyPackage;
-	private Set<TerminologyPackageCitation> terminologyPackageCitation;
 
 	/**
 	 * Default constructor
 	 */
 	public TerminologyPackage() {
-		terminologyAsset = new HashSet<>();
 		terminologyPackage = new HashSet<>();
-		terminologyPackageCitation = new HashSet<>();
-	}
-
-	/**
-	 * Get the TerminologyAssets contained in a given instance of a
-	 * TerminologyPackage.
-	 * 
-	 * @return The TerminologyAssets contained in a given instance of a
-	 *         TerminologyPackage.
-	 */
-	public Set<TerminologyAsset> getTerminologyAsset() {
-		return Collections.unmodifiableSet(terminologyAsset);
-	}
-
-	/**
-	 * <p>
-	 * Adds the specified TerminologyAsset if it is not already present. If this
-	 * package already contains the element, the call leaves the package unchanged
-	 * and returns false. In combination with the restriction on Set constructors,
-	 * this ensures that sets never contain duplicate elements.
-	 * </p>
-	 * <p>
-	 * On change, notifies <b>terminologyAsset</b>
-	 * </p>
-	 * 
-	 * @param value element to be added to this set
-	 * @return true if this set did not already contain the specified element
-	 * @throws UnsupportedOperationException - if the add operation is not supported
-	 *                                       by this set
-	 * @throws ClassCastException            - if the class of the specified element
-	 *                                       prevents it from being added to this
-	 *                                       set
-	 * @throws NullPointerException          - if the specified element is null
-	 * @throws IllegalArgumentException      - if some property of the specified
-	 *                                       element prevents it from being added to
-	 *                                       this set
-	 */
-	public boolean addTerminologyAsset(TerminologyAsset value)
-			throws UnsupportedOperationException, ClassCastException, NullPointerException, IllegalArgumentException {
-		if (value == null)
-			throw new NullPointerException();
-		Set<TerminologyAsset> oldValue = new HashSet<>(terminologyAsset);
-		boolean result = terminologyAsset.add(value);
-		if (result)
-			pcs.firePropertyChange("terminologyAsset", oldValue, terminologyAsset);
-		return result;
-	}
-
-	/**
-	 * <p>
-	 * Removes the specified TermilologyAsset from this package if it is present.
-	 * Returns true if this package contained the element (or equivalently, if this
-	 * set changed as a result of the call). (This set will not contain the element
-	 * once the call returns.)
-	 * </p>
-	 * <p>
-	 * On change, notifies <b>terminologyAsset</b>
-	 * </p>
-	 * 
-	 * @param value the TerminologyAsset to be removed
-	 * @return true if the package contained value.
-	 * @throws NullPointerException if value is null
-	 */
-	public boolean removeTerminologyAsset(TerminologyAsset value) throws NullPointerException {
-		boolean result = terminologyAsset.remove(value);
-		if (result)
-			pcs.firePropertyChange("terminologyAsset", null, terminologyAsset);
-		return result;
 	}
 
 	/**
@@ -121,21 +50,6 @@ public class TerminologyPackage extends TerminologyElement {
 	 */
 	public Set<TerminologyPackage> getTerminologyPackage() {
 		return terminologyPackage;
-	}
-
-	/**
-	 * <p>
-	 * Remove all terminology assets from this package.
-	 * </p>
-	 * <p>
-	 * On change, notifies <b>terminologyAsset</b>
-	 * </p>
-	 */
-	public void clearTerminologyAsset() {
-		if (!terminologyAsset.isEmpty()) {
-			terminologyAsset.clear();
-			pcs.firePropertyChange("terminologyAsset", null, terminologyAsset);
-		}
 	}
 
 	/**
@@ -205,87 +119,6 @@ public class TerminologyPackage extends TerminologyElement {
 		if (!terminologyPackage.isEmpty()) {
 			terminologyPackage.clear();
 			pcs.firePropertyChange("terminologyPackage", null, terminologyPackage);
-		}
-	}
-
-	/**
-	 * Get the nested terminologyPackageCitation contained in a given instance of a
-	 * TerminologyPackage
-	 * 
-	 * @return The nested terminologyPackageCitation contained in a given instance
-	 *         of a TerminologyPackage
-	 */
-	public Set<TerminologyPackageCitation> getTerminologyPackageCitation() {
-		return terminologyPackageCitation;
-	}
-
-	/**
-	 * <p>
-	 * Adds the specified TerminologyPackage if it is not already present. If this
-	 * package already contains the element, the call leaves the package unchanged
-	 * and returns false. In combination with the restriction on Set constructors,
-	 * this ensures that sets never contain duplicate elements.
-	 * </p>
-	 * <p>
-	 * On change, notifies <b>terminologyPackage</b>
-	 * </p>
-	 * 
-	 * @param value element to be added to this set
-	 * @return true if this set did not already contain the specified element
-	 * @throws UnsupportedOperationException - if the add operation is not supported
-	 *                                       by this set
-	 * @throws ClassCastException            - if the class of the specified element
-	 *                                       prevents it from being added to this
-	 *                                       set
-	 * @throws NullPointerException          - if the specified element is null
-	 * @throws IllegalArgumentException      - if some property of the specified
-	 *                                       element prevents it from being added to
-	 *                                       this set
-	 */
-	public boolean addTerminologyPackageCitation(TerminologyPackageCitation value)
-			throws UnsupportedOperationException, ClassCastException, NullPointerException, IllegalArgumentException {
-		if (value == null)
-			throw new NullPointerException();
-		Set<TerminologyPackageCitation> oldValue = new HashSet<>(terminologyPackageCitation);
-		boolean result = terminologyPackageCitation.add(value);
-		pcs.firePropertyChange("terminologyPackageCitation", oldValue, terminologyPackageCitation);
-		return result;
-	}
-
-	/**
-	 * <p>
-	 * Removes the specified TermilologyPackageCitation from this package if it is
-	 * present. Returns true if this package contained the element (or equivalently,
-	 * if this set changed as a result of the call). (This set will not contain the
-	 * element once the call returns.)
-	 * </p>
-	 * <p>
-	 * On change, notifies <b>terminologyPackageCertification</b>
-	 * </p>
-	 * 
-	 * @param value the TerminologyAssetCitation to be removed
-	 * @return true if the package contained value.
-	 * @throws NullPointerException if value is null
-	 */
-	public boolean removeTerminologyPackageCitation(TerminologyPackageCitation value) throws NullPointerException {
-		Set<TerminologyPackageCitation> oldValue = new HashSet<>(terminologyPackageCitation);
-		boolean result = terminologyPackageCitation.remove(value);
-		pcs.firePropertyChange("terminologyPackageCitation", oldValue, terminologyPackageCitation);
-		return result;
-	}
-
-	/**
-	 * <p>
-	 * Remove all terminology package citations from this package.
-	 * </p>
-	 * <p>
-	 * On change, notifies <b>terminologyPackageCitation</b>
-	 * </p>
-	 */
-	public void clearTerminologyPackageCitation() {
-		if (!terminologyPackageCitation.isEmpty()) {
-			terminologyPackageCitation.clear();
-			pcs.firePropertyChange("terminologyPackageCitation", null, terminologyPackageCitation);
 		}
 	}
 }
