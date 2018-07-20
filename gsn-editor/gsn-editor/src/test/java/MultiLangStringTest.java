@@ -1,9 +1,6 @@
 package test.java;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
-
-import java.beans.PropertyChangeListener;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -40,5 +37,6 @@ class MultiLangStringTest {
 		langString.setLang(language);
 		langString.setContent(content);
 		multiLangString.addLangString(langString);
+		assertEquals(content, multiLangString.getValue(language).getContent().get());
  	}
 }
