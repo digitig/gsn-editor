@@ -12,6 +12,7 @@ import java.util.Optional;
  *
  */
 public class LangString {
+	// TODO implement INotifier
 	Optional<String> lang;
 	Optional<String> content;
 	

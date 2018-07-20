@@ -17,6 +17,7 @@ import java.util.Map;
  *
  */
 public class MultiLangString {
+	// TODO implement INotifier
 	Map<String, String> value;
 	
 	public MultiLangString() {
