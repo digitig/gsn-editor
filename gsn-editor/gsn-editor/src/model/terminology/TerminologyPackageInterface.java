@@ -18,6 +18,7 @@ public class TerminologyPackageInterface extends TerminologyElement {
 	
 	/**
 	 * Default constructor
+	 * @param value the package the interface implements.
 	 */
 	public TerminologyPackageInterface(TerminologyPackage value) {
 		implementsValue = value;

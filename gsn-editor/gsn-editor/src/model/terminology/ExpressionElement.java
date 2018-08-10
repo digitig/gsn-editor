@@ -79,7 +79,7 @@ public abstract class ExpressionElement extends TerminologyAsset {
 
 	/**
 	 * <p>Removes all terminology categories.</p>
-	 * </p>>Notifies <b>terminologyCategory</b>.
+	 * <p>Notifies <b>terminologyCategory</b></p>.
 	 */
 	public void clearCategory() {
 		category.clear();

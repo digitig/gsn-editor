@@ -60,7 +60,7 @@ public class Term extends ExpressionElement {
 	
 	/**
 	 * Get a reference which points to the origin of the Term.
-	 * @return
+	 * @return the reference
 	 */
 	public Optional<ModelElement> getOrigin() {
 		return origin;

@@ -9,7 +9,7 @@ import java.util.Set;
  * ArtifactAssetRelationships between the ArtifactAssets of two or more ArtifactPackages.
  * <h1>Semantics</h1>
  * ArtifactPackageBindings can be used to map dependencies between the cited ArtifactAssets of two 
- * or more ArtifactPackages. For example, a binding could be used to record a ‘derivedFrom’ 
+ * or more ArtifactPackages. For example, a binding could be used to record a "derivedFrom" 
  * ArtifactAssetRelationship between the ArtifactAsset of one package to the ArtifactAsset of 
  * another.
  * <h1>Constraints</h1>

@@ -13,7 +13,7 @@ import java.util.Set;
  * Expressions are used to model phrases and sentences. These are defined using the value property. 
  * Alternatively, the expression can also be defined (using the value property) as a production rule 
  * involving other ExpressionElements. In this case, the value must use a suitable (string) form for 
- * denoting the position of involved ExpressionElements (e.g., “$<ExpressionElement.name>$”) within 
+ * denoting the position of involved ExpressionElements (e.g., "$&lt;ExpressionElement.name&gt;$") within 
  * the production rule, and expressing production rule operators (e.g., Extended Backus-Naur Form 
  * operators).
  * <h1>Constraints</h1>
